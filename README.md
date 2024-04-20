@@ -9,3 +9,4 @@
 - add Axios
 - add Keycloak adapter
 - add headless UI
+- add algolia and instasearch
