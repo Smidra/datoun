@@ -6,7 +6,9 @@
   "scripts": {
     "dev": "vite",
     "build": "vue-tsc && vite build",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "prettier": "prettier --write {src,test}/*.{js,vue,ts,json} {src,test}/**/*.{js,vue,ts,json} --ignore-unknown --no-error-on-unmatched-pattern",
+    "prepare": "husky install"
   },
   "dependencies": {
     "vue": "^3.4.21"
@@ -21,14 +23,15 @@
     "typescript": "^5.2.2",
     "vite": "^5.2.0",
     "vue-tsc": "^2.0.6",
-    "lint-staged": "^15.2.2"
+    "lint-staged": "^15.2.2",
+    "husky": "^8.0.0"
   },
   "gitHooks": {
     "pre-commit": "lint-staged"
   },
   "lint-staged": {
     "{src,test}/**/*.{js,vue,ts,json}": [
-      "prettier --write"
+      "prettier --write --ignore-unknown --no-error-on-unmatched-pattern"
     ]
   }
 }
