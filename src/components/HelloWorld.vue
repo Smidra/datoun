@@ -11,6 +11,10 @@ const { increaseCounter, reportCounter } = useInjectTestStore();
 const counterReport = computed<string>(() => {
   return "REPORT: " + reportCounter();
 });
+
+function increaseByTwo() {
+  increaseCounter(2);
+}
 </script>
 
 <template>
@@ -24,7 +28,7 @@ const counterReport = computed<string>(() => {
       increase action.
     </CardContent>
     <CardFooter>
-      <Button size="sm" variant="outline" @click="() => increaseCounter(2)">increase by 2</Button>
+      <Button size="sm" variant="outline" @click="increaseByTwo">increase by 2</Button>
     </CardFooter>
   </Card>
   <Card class="mt-2 w-80 pt-6">

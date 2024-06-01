@@ -11,6 +11,8 @@ export const createTestStore = (dep: TestStoreDependencies) => {
   const getPrefixFn = dep.getPrefix;
   const counter = ref(0);
 
+  const books = ref({ booksArray: [{ key: 0, value: { name: "jmeno knihy 1" } }] });
+
   const reportCounter = () => {
     return `${getPrefixFn()} : ${counter.value}`;
   };
