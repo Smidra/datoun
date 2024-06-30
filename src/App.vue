@@ -1,26 +1,67 @@
 <script setup lang="ts">
-import HelloWorld from "./components/HelloWorld.vue";
-import { useProvideTestStore } from "./stores/testStore.ts";
-import { Button } from "@/components/ui/button";
-import { Separator } from "@/components/ui/separator";
-import DarkModeToggle from "@/components/ui/darkModeToggle/DarkModeToggle.vue";
+import Card from './components/ui/card/Card.vue'
+import Separator from './components/ui/separator/Separator.vue'
+import Logo from "@/components/Logo.vue";
+import Search from "@/components/Search.vue"
+import CategoryBreadcrumbs from "@/components/CategoryBreadcrumbs.vue";
+import ContentText from "@/components/ContentMainText.vue";
+import ProfileCircle from "@/components/ProfileCircle.vue";
+import ContentItemCardsGrid from "@/components/ContentItemCardsGrid.vue";
+import {piniaStore, state_enum} from "@/lib/piniaStore.ts";
+import ContentCompanyDetail from "@/components/ContentCompanyDetail.vue";
+import MainMenu from "@/components/MainMenu.vue";
 
-const getCountPrefix = () => "the count is";
-const { resetCounter } = useProvideTestStore({ getPrefix: getCountPrefix });
+const store = piniaStore()
 </script>
 
 <template>
-  <div class="w-96 p-3">
-    <div class="flex flex-row justify-between">
-      <h1 class="scroll-m-20 pb-8 text-4xl font-extrabold tracking-tight lg:text-5xl">Main app here</h1>
-      <DarkModeToggle />
+  <div class="bg-whites h-screen">
+    <div class="max-w-6xl mx-auto pt-5 px-5">
+      <!-- HEADER  -->
+      <div class="flex flex-row justify-between pb-5">
+        <Logo/>
+        <div class="flex flex-row gap-5">
+          <Search/>
+          <ProfileCircle/>
+        </div>
+      </div>
+
+      <!--  BODY  -->
+      <Card class="flex flex-row shadow min-h-[600px] mb-16">
+        <!-- Left side (menu)-->
+        <div class="w-menu-width flex flex-col">
+          <MainMenu />
+        </div>
+
+        <!-- Verical line -->
+        <div class="flex flex-col">
+          <Separator orientation="vertical"/>
+        </div>
+
+        <!-- Right side (content) -->
+        <div class="basis-full">
+          <div class=" pl-5 pr-5 pb-5 pt-3">
+
+            <!-- Detail od Company -->
+            <div v-if="store.state === state_enum.ShowingDetail">
+              <ContentCompanyDetail/>
+            </div>
+
+            <!-- Companies grid -->
+            <div v-if="store.state === state_enum.ShowingComapniesGrid">
+              <div class="h-10">
+                <CategoryBreadcrumbs/>
+              </div>
+              <ContentText>{{ store.category_c_selected }}</ContentText>
+              <ContentItemCardsGrid/>
+            </div>
+
+          </div>
+        </div>
+      </Card>
     </div>
-    <div>
-      <Button @click="resetCounter">reset counter</Button>
-    </div>
-    <Separator class="my-4" />
-    <HelloWorld msg="Hello World message" />
   </div>
 </template>
 
-<style scoped></style>
+<style scoped>
+</style>

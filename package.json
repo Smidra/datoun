@@ -1,33 +1,29 @@
 {
-  "name": "datoun-fe-2",
+  "name": "template",
   "private": true,
   "version": "0.0.0",
   "type": "module",
   "scripts": {
     "dev": "vite",
     "build": "vue-tsc && vite build",
-    "preview": "vite preview",
-    "format": "prettier --write {src,test}/*.{js,vue,ts,json} {src,test}/**/*.{js,vue,ts,json} --ignore-unknown --no-error-on-unmatched-pattern"
+    "preview": "vite preview"
   },
   "dependencies": {
-    "@vueuse/core": "^10.9.0",
+    "@vueuse/core": "^10.11.0",
     "class-variance-authority": "^0.7.0",
     "clsx": "^2.1.1",
-    "lucide-vue-next": "^0.372.0",
-    "radix-vue": "^1.7.2",
+    "lucide-vue-next": "^0.383.0",
+    "pinia": "^2.1.7",
+    "pocketbase": "^0.21.3",
+    "radix-vue": "^1.8.2",
     "tailwind-merge": "^2.3.0",
     "tailwindcss-animate": "^1.0.7",
     "vue": "^3.4.21"
   },
   "devDependencies": {
-    "@iconify-json/radix-icons": "^1.1.14",
-    "@iconify/vue": "^4.1.2",
-    "@types/node": "^20.12.7",
+    "@types/node": "^20.13.0",
     "@vitejs/plugin-vue": "^5.0.4",
     "autoprefixer": "^10.4.19",
-    "postcss": "^8.4.38",
-    "prettier": "^3.2.5",
-    "prettier-plugin-tailwindcss": "^0.5.14",
     "tailwindcss": "^3.4.3",
     "typescript": "^5.2.2",
     "vite": "^5.2.0",
